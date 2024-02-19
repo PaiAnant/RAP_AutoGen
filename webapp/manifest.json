@@ -1,0 +1,146 @@
+{
+  "_version": "1.57.0",
+  "sap.app": {
+    "id": "com.travel.autogenrap",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:lrop",
+      "version": "1.11.5",
+      "toolsId": "fae0b796-ffbe-4a74-b611-b4b82c93abdb"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/sap/opu/odata4/sap/zui_rap100_atrav_ap_o4/srvd/sap/zui_rap100_atrav_ap_o4/0001/",
+        "type": "OData",
+        "settings": {
+          "annotations": [
+            "annotation"
+          ],
+          "localUri": "localService/metadata.xml",
+          "odataVersion": "4.0"
+        }
+      },
+      "annotation": {
+        "type": "ODataAnnotation",
+        "uri": "annotations/annotation.xml",
+        "settings": {
+          "localUri": "annotations/annotation.xml"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.117.5",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.ushell": {},
+        "sap.fe.templates": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "com.travel.autogenrap.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      },
+      "@i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "uri": "i18n/i18n.properties"
+      }
+    },
+    "resources": {
+      "css": []
+    },
+    "routing": {
+      "config": {},
+      "routes": [
+        {
+          "pattern": ":?query:",
+          "name": "ZC_RAP100_ATRAV_APList",
+          "target": "ZC_RAP100_ATRAV_APList"
+        },
+        {
+          "pattern": "ZC_RAP100_ATRAV_AP({key}):?query:",
+          "name": "ZC_RAP100_ATRAV_APObjectPage",
+          "target": "ZC_RAP100_ATRAV_APObjectPage"
+        }
+      ],
+      "targets": {
+        "ZC_RAP100_ATRAV_APList": {
+          "type": "Component",
+          "id": "ZC_RAP100_ATRAV_APList",
+          "name": "sap.fe.templates.ListReport",
+          "options": {
+            "settings": {
+              "contextPath": "/ZC_RAP100_ATRAV_AP",
+              "variantManagement": "Page",
+              "navigation": {
+                "ZC_RAP100_ATRAV_AP": {
+                  "detail": {
+                    "route": "ZC_RAP100_ATRAV_APObjectPage"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "ZC_RAP100_ATRAV_APObjectPage": {
+          "type": "Component",
+          "id": "ZC_RAP100_ATRAV_APObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "editableHeaderContent": false,
+              "contextPath": "/ZC_RAP100_ATRAV_AP"
+            }
+          }
+        }
+      }
+    }
+  },
+  "sap.fiori": {
+    "registrationIds": [],
+    "archeType": "transactional"
+  }
+}
